@@ -34,6 +34,7 @@ if (personaMovieDB.count < 10) {
 	console.log('error');
 }
 
+// Функции
 const usdCurr = 28;
 const eurCurr = 32;
 
@@ -44,3 +45,15 @@ function convert(amount, curr) {
 convert(500, usdCurr);
 convert(500, eurCurr);
 
+//Методы и свойства строк и чисел
+const str = 'teSt';
+
+console.log(str.toLocaleLowerCase());
+
+const num = 12.2;
+
+console.log(Math.round(num));
+
+const test = '12.22px';
+console.log(parseInt(test));
+console.log(parseFloat(test));
