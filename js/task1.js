@@ -1,4 +1,14 @@
-const numberOfFilms = +prompt('Сколько фильмов вы уже просмотрели ?', '');
+let numberOfFilms;
+
+function start() {
+	numberOfFilms = +prompt('Сколько фильмов вы уже просмотрели ?', '');
+
+	while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
+		numberOfFilms = +prompt('Сколько фильмов вы уже просмотрели ?', '');
+	}
+}
+
+start();
 
 const personaMovieDB = {
 	count: numberOfFilms,
@@ -8,31 +18,53 @@ const personaMovieDB = {
 	private: false
 };
 
-for (let i = 0; i < 2; i++) {
-	const a = prompt('Один из последних просмотренных фильмов ?', ''),
-		b = prompt('На сколько оцените его ?', '');
+function rememberMyFilms() {
+	for (let i = 0; i < 2; i++) {
+		const a = prompt('Один из последних просмотренных фильмов ?', ''),
+			b = prompt('На сколько оцените его ?', '');
 
-	if (a != null && b != null && a != '' && b != '' && a.length < 50) {
+		if (a != null && b != null && a != '' && b != '' && a.length < 50) {
+			personaMovieDB.movies[a] = b;
+			console.log('done');
+		} else {
+			console.log('error');
+			i--;
+		}
 		personaMovieDB.movies[a] = b;
-		console.log('done');
+	}
+}
+
+rememberMyFilms();
+
+function detectPersonalevel(params) {
+	if (personaMovieDB.count < 10) {
+		console.log('Просмотрено довольно мало фильмов');
+	} else if (personaMovieDB.movies > 10 && personaMovieDB.movies < 30) {
+		console.log('Вы класический зритель');
+	} else if (personaMovieDB.movies > 30) {
+		console.log('Вы киноман');
 	} else {
 		console.log('error');
-		i--;
 	}
-	personaMovieDB.movies[a] = b;
 }
 
-console.log(personaMovieDB);
+detectPersonalevel();
 
-if (personaMovieDB.count < 10) {
-	console.log('Просмотрено довольно мало фильмов');
-} else if (personaMovieDB.movies > 10 && personaMovieDB.movies < 30) {
-	console.log('Вы класический зритель');
-} else if (personaMovieDB.movies > 30) {
-	console.log('Вы киноман');
-} else {
-	console.log('error');
+function showMyDB(hidden) {
+	if (!hidden) {
+		console.log(personaMovieDB);
+	}
 }
+
+showMyDB(personaMovieDB.private);
+
+function writeYourGenres() {
+	for (let i = 0; i <= 3; i++) {
+		personaMovieDB.genres[i - 1] = prompt(`Ваш любимый жанр под номером ${i}`);
+	}
+}
+
+writeYourGenres();
 
 // Функции
 const usdCurr = 28;
