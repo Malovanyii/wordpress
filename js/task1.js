@@ -20,7 +20,7 @@ const personaMovieDB = {
 
 function rememberMyFilms() {
 	for (let i = 0; i < 2; i++) {
-		const a = prompt('Один из последних просмотренных фильмов ?', ''),
+		const a = prompt('Один из последних просмотренных фильмов ?', '').trim(),
 			b = prompt('На сколько оцените его ?', '');
 
 		if (a != null && b != null && a != '' && b != '' && a.length < 50) {
@@ -36,7 +36,7 @@ function rememberMyFilms() {
 
 rememberMyFilms();
 
-function detectPersonalevel(params) {
+function detectPersonalevel() {
 	if (personaMovieDB.count < 10) {
 		console.log('Просмотрено довольно мало фильмов');
 	} else if (personaMovieDB.movies > 10 && personaMovieDB.movies < 30) {
