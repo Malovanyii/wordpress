@@ -109,3 +109,17 @@ console.log(Object.getOwnPropertyNames(man).forEach(function (val) {
 
 const { eyes, skin } = man.options;
 console.log(`Глаза цвета ${eyes}, а кожа цвета ${skin}`);
+
+// массивы
+const arr = [2, 3, 5, 6, 8];
+
+arr.sort(function compareNum(a, b) {
+	return a - b;
+}); //сортировка массива
+console.log(arr);
+
+console.log(arr.length);
+
+arr.forEach(function (item, i, arr) {
+	console.log(`${i}: ${item}, внутри массива ${arr}`);
+});	
