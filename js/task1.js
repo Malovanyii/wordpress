@@ -89,3 +89,23 @@ console.log(Math.round(num));
 const test = '12.22px';
 console.log(parseInt(test));
 console.log(parseFloat(test));
+
+//Обьекты
+const man = {
+	name: 'Andrii',
+	surname: 'Malovanyi',
+	age: 19,
+	options: {
+		eyes: 'brown',
+		skin: 'pale'
+	}
+};
+
+console.log(Object.values(man)); // метод просмотра всех значений в обьекте
+
+console.log(Object.getOwnPropertyNames(man).forEach(function (val) {
+	console.log(val + '->' + man[val]);
+})); // метод для просмотра ключ + значение
+
+const { eyes, skin } = man.options;
+console.log(`Глаза цвета ${eyes}, а кожа цвета ${skin}`);
